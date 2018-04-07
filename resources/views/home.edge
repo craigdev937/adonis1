@@ -1,0 +1,50 @@
+@layout('layouts.app')
+
+@section('title')
+    Todos App with Adonis
+@endsection
+
+@section('content')
+    <div class="card mb-5">
+        @if(flashMessage('notification'))
+            <span class="alert alert-info">
+                {{ flashMessage('notification') }}
+            </span>
+        @endif
+        <div class="card-body">
+            <form action="{{ route('TodoController.store') }}" method="POST">
+                {{ csrfField() }}
+                <input 
+                    type="text" 
+                    class="form-control mb-3" 
+                    name="text" 
+                    placeholder="Type in todo ..." 
+                autofocus>
+                @if(hasErrorFor('text'))
+                    <span class="text-danger">
+                        {{ getErrorFor('text') }}
+                    </span>
+                @endif
+            </form>
+        </div>
+    </div>
+    <div class="card">
+    <div class="card-header text-center">
+        My todo-list
+    </div>
+    <ul class="list-group list-group-flush">
+        @each(todo in todos)
+        <li class="list-group-item">
+            {{ todo.text }}
+            <a href="{{ route('TodoController.destroy', { id: todo.id }) }}" 
+            class="badge badge-danger float-right"
+            >Delete</a>
+            <a href="{{ route('TodoController.edit', { id: todo.id }) }}" 
+            class="badge badge-info float-right mr-2"
+            >Edit</a>
+        </li>
+        @endeach
+    </ul>
+</div>
+@endsection
+

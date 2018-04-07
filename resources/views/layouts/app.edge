@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        @section('title')
+        Todos App with adonis
+        @endsection
+    </title>
+    {{ css('https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css') }}
+    {{ css('css/style') }}
+</head>
+<body>
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                @!section('content')
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

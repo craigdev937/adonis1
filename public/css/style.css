@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+
+body {
+    background-color: #8AA0B7;
+}
+
+#banner {
+    background-color: #FF966D;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 3em;
+    padding: 16px;
+}
+
+#todoInput {
+    font-size: 18px;
+}
+
+#deleteBtn {
+    background-color: #D90429;
+    font-size: 12px;
+    /* padding: 6px 4px; */
+    border-radius: 8px;
+}
+
+#editBtn {
+    background-color: #FF966D;
+    font-size: 12px;
+    /* padding: 6px 4px; */
+    border-radius: 8px;
+}
+
