@@ -37,10 +37,10 @@
         <li class="list-group-item">
             {{ todo.text }}
             <a href="{{ route('TodoController.destroy', { id: todo.id }) }}" 
-            class="badge badge-danger float-right"
+                class="badge badge-danger float-right"
             >Delete</a>
             <a href="{{ route('TodoController.edit', { id: todo.id }) }}" 
-            class="badge badge-info float-right mr-2"
+                class="badge badge-info float-right mr-2"
             >Edit</a>
         </li>
         @endeach
