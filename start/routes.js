@@ -18,8 +18,20 @@ const Todo = use('App/Models/Todo');
 
 Route.get('/', 'TodoController.index');
 Route.post('/', 'TodoController.store').validator('SaveTodo');
-Route.get('/todos/delete/:id', 'TodoController.destroy');
-Route.get('/todos/edit/:id', 'TodoController.edit');
-Route.post('/todos/update/:id', 'TodoController.update')
-    .validator('SaveTodo');
+
+Route.group(() => {
+    Route.get('/delete/:id', 'TodoController.destroy');
+    Route.get('/edit/:id', 'TodoController.edit');
+    Route.post('/update/:id', 'TodoController.update').validator('SaveTodo');
+}).prefix('/todos').middleware('findTodo');
+
+Route.get('/logout', async ({ auth, response }) => {
+    await auth.logout();
+    return response.redirect('/');
+});
+
+Route.on('auth/signin').render('auth.sign-in');
+Route.on('/auth/signup').render('auth.sign-up');
+Route.post('/auth/signup', 'UserController.store');
+Route.post('/auth/signin', 'UserController.signIn');
 
